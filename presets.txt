@@ -1,0 +1,21 @@
+Scripted SQL to OPENXML
+\s*\[(\w+)\]\s*\[(\w+)\]\s*(\(\d+,?\s*\d*\))?.*
+$1\t\t$2 $3\t\t'$1',\n
+Scripted SQL to Update OPENXML
+\s*\[(\w+)\]\s*\[(\w+)\]\s*(\(\d+\))?.*
+table.$1 = xml.$1 ,\n
+Scripted SQL to Comma Separated
+\s*\[(\w+)\]\s*\[(\w+)\]\s*(\(\d+\))?.*
+$1, 
+SQL Date string to Normal date String
+(\d{4})-(\d\d)-(\d\d)T\d\d:\d\d:\d\d\.\d{7}-\d\d:\d\d
+$2/$3/$1
+XML to <OPTION> (no CR/LF in xml)
+\<Element\>\s*\<childID\>(.*?)\<\/childID\>\s*\<childDisplay\>(.*?)\<\/childDisplay\>\s*\<\/Element\>
+<OPTION VALUE=""$1"">$2</OPTION>
+Create Procedure Arguments to DECLARE / SET
+\s*(\@\w+)\s*(\w+).*,?
+DECLARE $1 $2\nSET $1 = \n
+Create Procedure Arguments to Dataprovider SqlParameters
+\s*(\@\w+)\s*(\w+).*,?
+prm = New SqlParameter("$1", SqlDbType.$2, )\n
