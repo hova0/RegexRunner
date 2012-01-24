@@ -5,3 +5,7 @@
 /obj
 *.sln
 *.suo
+regex.snk
+RegexRunner document.docx
+RegexRunner.csproj.vspscc
+UpgradeLog.XML
