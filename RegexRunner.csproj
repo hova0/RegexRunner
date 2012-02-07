@@ -167,6 +167,7 @@
     <EmbeddedResource Include="regex_small.ico" />
     <Content Include="LICENSE.TXT" />
     <Content Include="presets.txt" />
+    <Content Include="README.txt" />
     <Content Include="regex.ico" />
     <None Include="Properties\app.manifest" />
     <None Include="regex.snk" />
