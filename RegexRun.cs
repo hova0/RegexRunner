@@ -75,6 +75,7 @@ namespace RegExHelper
             //regex_replace = Regex.Replace(regex_replace, @"[^\\]?\\n", "\n");
             regex_match = regex_match.Replace("\\n", "\n");
             regex_match = regex_match.Replace("\\\n", "\\n");
+            regex_match = regex_match.Replace("$^", "$\n^");
             //regex_replace = Regex.Replace(regex_replace, @"[^\\]?\\r", "\r");
             regex_match = regex_match.Replace("\\r", "");   // \r is removed through end of line normalization
             //regex_match = regex_match.Replace("\\\r", "\\r");
