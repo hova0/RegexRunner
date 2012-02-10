@@ -38,10 +38,10 @@ namespace RegExHelper
 		private System.Windows.Forms.Label label2;
 		private System.Windows.Forms.Label label3;
 		private System.Windows.Forms.ComboBox regex_match;
-		private bool renameonly = false;
+		/*private bool renameonly = false;
 		private string recursedirectory;
 		private string recursefile;
-		private bool recurseflag = false;
+		private bool recurseflag = false;*/
 		
 		//private NotifyIcon m_myTray;
 		private ContextMenu m_menu;  
@@ -238,7 +238,7 @@ namespace RegExHelper
             this.output_textbox.Size = new System.Drawing.Size(684, 84);
             this.output_textbox.TabIndex = 13;
             this.toolTip1.SetToolTip(this.output_textbox, "This contains the output after \r\nprocessing of the source with the Regular Expres" +
-                    "sion.");
+        "sion.");
             this.output_textbox.WordWrap = false;
             // 
             // button1
@@ -294,8 +294,8 @@ namespace RegExHelper
             this.presets_box.Size = new System.Drawing.Size(536, 21);
             this.presets_box.TabIndex = 3;
             this.toolTip1.SetToolTip(this.presets_box, "This contains Presets which are read\r\nfrom the presets.txt file.\r\nThe format is 3" +
-                    " lines for each Preset\r\n1. Text to display in Preset box\r\n2. Match Expression\r\n3" +
-                    ". Replace Expression");
+        " lines for each Preset\r\n1. Text to display in Preset box\r\n2. Match Expression\r\n3" +
+        ". Replace Expression");
             this.presets_box.SelectedIndexChanged += new System.EventHandler(this.presets_box_SelectedIndexChanged);
             this.presets_box.TextUpdate += new System.EventHandler(this.presets_box_TextUpdate);
             // 
@@ -336,7 +336,8 @@ namespace RegExHelper
             this.label_message.Name = "label_message";
             this.label_message.Size = new System.Drawing.Size(164, 24);
             this.label_message.TabIndex = 99;
-            this.toolTip1.SetToolTip(this.label_message, "Status Message");
+            this.toolTip1.SetToolTip(this.label_message, "Status Message - Will print \"No occurances\" when the \r\nexpression failed to match" +
+        ".");
             // 
             // panel8
             // 
@@ -452,7 +453,9 @@ namespace RegExHelper
             this.IgnoreDups.Size = new System.Drawing.Size(85, 17);
             this.IgnoreDups.TabIndex = 100;
             this.IgnoreDups.Text = "Ignore Dups";
+            this.toolTip1.SetToolTip(this.IgnoreDups, "With \"Match Mode\" enabled, will prevent duplicate output.");
             this.IgnoreDups.UseVisualStyleBackColor = true;
+            this.IgnoreDups.CheckedChanged += new System.EventHandler(this.IgnoreDups_CheckedChanged);
             // 
             // checkBox_singleline
             // 
@@ -464,7 +467,7 @@ namespace RegExHelper
             this.checkBox_singleline.TabIndex = 12;
             this.checkBox_singleline.Text = "Single-Line";
             this.toolTip1.SetToolTip(this.checkBox_singleline, "Specifies single-line mode.\r\n Changes the meaning of the period character (.) \r\ns" +
-                    "o that it matches every character (instead of every \r\ncharacter except \\n).");
+        "o that it matches every character (instead of every \r\ncharacter except \\n).");
             // 
             // checkbox_multiLine
             // 
@@ -486,6 +489,7 @@ namespace RegExHelper
             this.casecheckbox.Size = new System.Drawing.Size(50, 17);
             this.casecheckbox.TabIndex = 9;
             this.casecheckbox.Text = "Case";
+            this.toolTip1.SetToolTip(this.casecheckbox, "Enable case-sensitive regular expressions");
             this.casecheckbox.UseVisualStyleBackColor = true;
             // 
             // label3
@@ -518,7 +522,7 @@ namespace RegExHelper
             this.match_mode.TabIndex = 11;
             this.match_mode.Text = "Match Mode";
             this.toolTip1.SetToolTip(this.match_mode, "The contents of the Replace box are ignored and only text\r\n matching the Match Re" +
-                    "gular Expression is displayed in output");
+        "gular Expression is displayed in output");
             // 
             // label1
             // 
@@ -935,7 +939,7 @@ namespace RegExHelper
                 }
                 ws.Close();
             }
-            catch (Exception ez)
+            catch 
             {
                 //
             }
@@ -974,6 +978,12 @@ namespace RegExHelper
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
             SavePresets();
+        }
+
+        private void IgnoreDups_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!match_mode.Checked)
+                match_mode.Checked = true;
         }
     }
 

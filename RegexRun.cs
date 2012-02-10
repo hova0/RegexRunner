@@ -90,7 +90,7 @@ namespace RegExHelper
 			}
             try
             {
-                thisregex = new System.Text.RegularExpressions.Regex(regex_match, (casesensitive ? System.Text.RegularExpressions.RegexOptions.IgnoreCase : 0) | iregexoptions);
+                thisregex = new System.Text.RegularExpressions.Regex(regex_match, (casesensitive ? 0 : System.Text.RegularExpressions.RegexOptions.IgnoreCase ) | iregexoptions);
             }
             catch (System.Exception ex)
             {
