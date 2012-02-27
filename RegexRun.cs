@@ -99,10 +99,10 @@ namespace RegExHelper
                 return ;
             }
 			//The Actual regular expression
-			
+            OnMessageEvent("label", "");  //clear status
 			if(!regex_match_mode)
 			{
-
+                int i_hash = input_text.GetHashCode();
 				input_text = input_text.Replace("\r", "");  //Normalize CRLFs
                 // Run the user-entered regex and normalize LF's back to CRLFs
                 try
@@ -124,6 +124,10 @@ namespace RegExHelper
 					lpos = regex_output_text.IndexOf(@"\l");
 					regex_output_text = regex_output_text.Substring(0, lpos) + regex_output_text.Substring(lpos + 2, 1).ToLower() + regex_output_text.Substring(lpos + 3);
 				}
+               
+                var o_hash = regex_output_text.GetHashCode();
+                if(i_hash == o_hash)
+                    OnMessageEvent("label", "No occurances found.");
 				OnMessageEvent("output", regex_output_text);
 				RegexFinished.Invoke(this, System.EventArgs.Empty);
 			} else
@@ -133,7 +137,7 @@ namespace RegExHelper
 				System.Text.StringBuilder tempstring = new System.Text.StringBuilder();
 //				output_textbox.Text = "";
 				System.Text.RegularExpressions.MatchCollection mymatches = thisregex.Matches(input_text);
-
+                
 				if(mymatches.Count == 0) { OnMessageEvent("label", "No occurances found."); /*output_textbox.Text = "";*/ }
 				string backupreplace;
 				int icounter = 0;
