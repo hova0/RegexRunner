@@ -61,7 +61,8 @@
     <BootstrapperEnabled>true</BootstrapperEnabled>
     <TargetZone>LocalIntranet</TargetZone>
     <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
-    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <OutputPath>bin\Debug\</OutputPath>
@@ -169,6 +170,7 @@
     <Content Include="presets.txt" />
     <Content Include="README.txt" />
     <Content Include="regex.ico" />
+    <None Include="app.config" />
     <None Include="Properties\app.manifest" />
     <None Include="regex.snk" />
   </ItemGroup>
