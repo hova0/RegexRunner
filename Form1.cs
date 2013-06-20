@@ -181,6 +181,8 @@ namespace RegExHelper
             this.panel7 = new System.Windows.Forms.Panel();
             this.label_message = new System.Windows.Forms.Label();
             this.panel8 = new System.Windows.Forms.Panel();
+            this.button8 = new System.Windows.Forms.Button();
+            this.button7 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
@@ -200,8 +202,6 @@ namespace RegExHelper
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.button7 = new System.Windows.Forms.Button();
-            this.button8 = new System.Windows.Forms.Button();
             this.panel3.SuspendLayout();
             this.pane2.SuspendLayout();
             this.panel5.SuspendLayout();
@@ -228,6 +228,7 @@ namespace RegExHelper
             this.toolTip1.SetToolTip(this.input_textbox, "This contains the source text to \r\nhave the Regular Expression applied to.");
             this.input_textbox.WordWrap = false;
             this.input_textbox.DoubleClick += new System.EventHandler(this.input_textbox_DoubleClick);
+            this.input_textbox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.input_textbox_KeyDown);
             // 
             // output_textbox
             // 
@@ -244,6 +245,7 @@ namespace RegExHelper
             this.toolTip1.SetToolTip(this.output_textbox, "This contains the output after \r\nprocessing of the source with the Regular Expres" +
         "sion.");
             this.output_textbox.WordWrap = false;
+            this.output_textbox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.output_textbox_KeyDown);
             // 
             // button1
             // 
@@ -358,6 +360,28 @@ namespace RegExHelper
             this.panel8.Name = "panel8";
             this.panel8.Size = new System.Drawing.Size(463, 24);
             this.panel8.TabIndex = 99;
+            // 
+            // button8
+            // 
+            this.button8.Dock = System.Windows.Forms.DockStyle.Left;
+            this.button8.Location = new System.Drawing.Point(413, 0);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(50, 24);
+            this.button8.TabIndex = 102;
+            this.button8.Text = "Unique";
+            this.button8.UseVisualStyleBackColor = true;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
+            // 
+            // button7
+            // 
+            this.button7.Dock = System.Windows.Forms.DockStyle.Left;
+            this.button7.Location = new System.Drawing.Point(371, 0);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(42, 24);
+            this.button7.TabIndex = 101;
+            this.button7.Text = "Sort";
+            this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
             // button6
             // 
@@ -574,28 +598,6 @@ namespace RegExHelper
             this.toolTip1.InitialDelay = 500;
             this.toolTip1.ReshowDelay = 250;
             this.toolTip1.ShowAlways = true;
-            // 
-            // button7
-            // 
-            this.button7.Dock = System.Windows.Forms.DockStyle.Left;
-            this.button7.Location = new System.Drawing.Point(371, 0);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(42, 24);
-            this.button7.TabIndex = 101;
-            this.button7.Text = "Sort";
-            this.button7.UseVisualStyleBackColor = true;
-            this.button7.Click += new System.EventHandler(this.button7_Click);
-            // 
-            // button8
-            // 
-            this.button8.Dock = System.Windows.Forms.DockStyle.Left;
-            this.button8.Location = new System.Drawing.Point(413, 0);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(50, 24);
-            this.button8.TabIndex = 102;
-            this.button8.Text = "Unique";
-            this.button8.UseVisualStyleBackColor = true;
-            this.button8.Click += new System.EventHandler(this.button8_Click);
             // 
             // Form1
             // 
@@ -1040,6 +1042,25 @@ namespace RegExHelper
             sc.RemoveAll( x => x == null );
 
             output_textbox.Text = String.Join(Environment.NewLine, sc);
+        }
+
+        private void input_textbox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Control && e.KeyCode == Keys.A)
+            {
+                input_textbox.SelectionStart = 0;
+                input_textbox.SelectionLength = input_textbox.Text.Length;
+            }
+        }
+
+        private void output_textbox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Control && e.KeyCode == Keys.A)
+            {
+                //Select all
+                output_textbox.SelectionStart = 0;
+                output_textbox.SelectionLength = output_textbox.Text.Length;
+            }
         }
     }
 
