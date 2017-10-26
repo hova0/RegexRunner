@@ -9,3 +9,4 @@ regex.snk
 RegexRunner document.docx
 RegexRunner.csproj.vspscc
 UpgradeLog.XML
+/.vs/RegexRunner/v15/sqlite3

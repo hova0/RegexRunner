@@ -80,17 +80,22 @@ namespace RegExHelper
             regex_match = regex_match.Replace("\\r", "");   // \r is removed through end of line normalization
             //regex_match = regex_match.Replace("\\\r", "\\r");
 
+            //Preprocess the input text some
+            
+            //input_text = input_text.Replace("\r\n", "\r");
+
 			if(regex_checkbox_multiLine)
-			{
 				iregexoptions |= System.Text.RegularExpressions.RegexOptions.Multiline;
-			}
 			if(regex_checkBox_singleline)
-			{
 				iregexoptions |= System.Text.RegularExpressions.RegexOptions.Singleline;
-			}
+            if(casesensitive)
+                iregexoptions |= System.Text.RegularExpressions.RegexOptions.IgnoreCase;
+            // Special case for non-greedy expressions causing blank matches
+            if (regex_match.EndsWith(".*)"))
+                regex_match = regex_match.Substring(0, regex_match.Length - 3) + ".+)";
             try
             {
-                thisregex = new System.Text.RegularExpressions.Regex(regex_match, (casesensitive ? 0 : System.Text.RegularExpressions.RegexOptions.IgnoreCase ) | iregexoptions);
+                thisregex = new System.Text.RegularExpressions.Regex(regex_match, iregexoptions);
             }
             catch (System.Exception ex)
             {
@@ -107,6 +112,8 @@ namespace RegExHelper
                 // Run the user-entered regex and normalize LF's back to CRLFs
                 try
                 {
+                    //MatchEvaluator me = new MatchEvaluator(IgnoreEmpties);
+                    
                     regex_output_text = thisregex.Replace(input_text, regex_replace).Replace("\n", "\r\n");
                 }
                 catch (Exception ex)
@@ -194,6 +201,13 @@ namespace RegExHelper
 
 			return ;
 		}
+
+    private static string IgnoreEmpties(Match input)
+        {
+            if (String.IsNullOrEmpty(input.Value))
+                return null;
+            return input.Value;
+        }
 
 	private void OnMessageEvent(string messagetype, string message) {
 		MessageEventArgs mea = new MessageEventArgs();

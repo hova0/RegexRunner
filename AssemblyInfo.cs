@@ -1,3 +1,4 @@
+using System.Runtime.InteropServices;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Security.Permissions;
@@ -27,7 +28,7 @@ using System.Security.Permissions;
 // You can specify all the values or you can default the Revision and Build Numbers 
 // by using the '*' as shown below:
 
-[assembly: AssemblyVersion("1.0.*")]
+[assembly: AssemblyVersion("1.1.*")]
 
 //
 // In order to sign your assembly you must specify a key to use. Refer to the 
@@ -55,5 +56,6 @@ using System.Security.Permissions;
 //       documentation for more information on this.
 //
 [assembly: AssemblyDelaySign(false)]
+[assembly: ComVisible(false)]
 //[assembly: AssemblyKeyFile("..\\regex.snk")]
 //[assembly: AssemblyKeyName("RegexKey")]
