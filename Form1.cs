@@ -177,6 +177,14 @@ namespace RegExHelper
             this.panel3 = new System.Windows.Forms.Panel();
             this.pane2 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.panel9 = new System.Windows.Forms.Panel();
+            this.presets_box = new System.Windows.Forms.ComboBox();
+            this.regex_replace = new System.Windows.Forms.ComboBox();
+            this.regex_match = new System.Windows.Forms.ComboBox();
+            this.panel10 = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.panel6 = new System.Windows.Forms.Panel();
             this.panel7 = new System.Windows.Forms.Panel();
             this.label_message = new System.Windows.Forms.Label();
@@ -194,29 +202,21 @@ namespace RegExHelper
             this.checkbox_multiLine = new System.Windows.Forms.CheckBox();
             this.casecheckbox = new System.Windows.Forms.CheckBox();
             this.match_mode = new System.Windows.Forms.CheckBox();
-            this.presets_box = new System.Windows.Forms.ComboBox();
-            this.regex_replace = new System.Windows.Forms.ComboBox();
-            this.regex_match = new System.Windows.Forms.ComboBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.splitter_main = new System.Windows.Forms.Splitter();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.panel9 = new System.Windows.Forms.Panel();
-            this.panel10 = new System.Windows.Forms.Panel();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.panel3.SuspendLayout();
             this.pane2.SuspendLayout();
             this.panel5.SuspendLayout();
+            this.panel9.SuspendLayout();
+            this.panel10.SuspendLayout();
             this.panel6.SuspendLayout();
             this.panel7.SuspendLayout();
             this.panel8.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
-            this.panel9.SuspendLayout();
-            this.panel10.SuspendLayout();
             this.SuspendLayout();
             // 
             // input_textbox
@@ -295,6 +295,93 @@ namespace RegExHelper
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(665, 103);
             this.panel5.TabIndex = 99;
+            // 
+            // panel9
+            // 
+            this.panel9.Controls.Add(this.presets_box);
+            this.panel9.Controls.Add(this.regex_replace);
+            this.panel9.Controls.Add(this.regex_match);
+            this.panel9.Controls.Add(this.panel10);
+            this.panel9.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel9.Location = new System.Drawing.Point(0, 0);
+            this.panel9.Name = "panel9";
+            this.panel9.Size = new System.Drawing.Size(665, 75);
+            this.panel9.TabIndex = 0;
+            // 
+            // presets_box
+            // 
+            this.presets_box.Dock = System.Windows.Forms.DockStyle.Top;
+            this.presets_box.Location = new System.Drawing.Point(64, 50);
+            this.presets_box.Name = "presets_box";
+            this.presets_box.Size = new System.Drawing.Size(601, 24);
+            this.presets_box.TabIndex = 2;
+            this.toolTip1.SetToolTip(this.presets_box, "This contains Presets which are read\r\nfrom the presets.txt file.\r\nThe format is 3" +
+        " lines for each Preset\r\n1. Text to display in Preset box\r\n2. Match Expression\r\n3" +
+        ". Replace Expression");
+            this.presets_box.SelectedIndexChanged += new System.EventHandler(this.presets_box_SelectedIndexChanged);
+            this.presets_box.TextUpdate += new System.EventHandler(this.presets_box_TextUpdate);
+            // 
+            // regex_replace
+            // 
+            this.regex_replace.Dock = System.Windows.Forms.DockStyle.Top;
+            this.regex_replace.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.regex_replace.Location = new System.Drawing.Point(64, 25);
+            this.regex_replace.Name = "regex_replace";
+            this.regex_replace.Size = new System.Drawing.Size(601, 25);
+            this.regex_replace.TabIndex = 1;
+            // 
+            // regex_match
+            // 
+            this.regex_match.Dock = System.Windows.Forms.DockStyle.Top;
+            this.regex_match.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.regex_match.Location = new System.Drawing.Point(64, 0);
+            this.regex_match.Name = "regex_match";
+            this.regex_match.Size = new System.Drawing.Size(601, 25);
+            this.regex_match.TabIndex = 0;
+            // 
+            // panel10
+            // 
+            this.panel10.Controls.Add(this.label1);
+            this.panel10.Controls.Add(this.label2);
+            this.panel10.Controls.Add(this.label3);
+            this.panel10.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel10.Location = new System.Drawing.Point(0, 0);
+            this.panel10.Name = "panel10";
+            this.panel10.Size = new System.Drawing.Size(64, 75);
+            this.panel10.TabIndex = 100;
+            // 
+            // label1
+            // 
+            this.label1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label1.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(0, 50);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(64, 25);
+            this.label1.TabIndex = 99;
+            this.label1.Text = "Presets";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label3
+            // 
+            this.label3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label3.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(0, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(64, 25);
+            this.label3.TabIndex = 99;
+            this.label3.Text = "Match";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label2
+            // 
+            this.label2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label2.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(0, 25);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(64, 25);
+            this.label2.TabIndex = 99;
+            this.label2.Text = "Replace";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // panel6
             // 
@@ -504,70 +591,6 @@ namespace RegExHelper
             this.toolTip1.SetToolTip(this.match_mode, "The contents of the Replace box are ignored and only text\r\n matching the Match Re" +
         "gular Expression is displayed in output");
             // 
-            // presets_box
-            // 
-            this.presets_box.Dock = System.Windows.Forms.DockStyle.Top;
-            this.presets_box.Location = new System.Drawing.Point(64, 50);
-            this.presets_box.Name = "presets_box";
-            this.presets_box.Size = new System.Drawing.Size(601, 24);
-            this.presets_box.TabIndex = 2;
-            this.toolTip1.SetToolTip(this.presets_box, "This contains Presets which are read\r\nfrom the presets.txt file.\r\nThe format is 3" +
-        " lines for each Preset\r\n1. Text to display in Preset box\r\n2. Match Expression\r\n3" +
-        ". Replace Expression");
-            this.presets_box.SelectedIndexChanged += new System.EventHandler(this.presets_box_SelectedIndexChanged);
-            this.presets_box.TextUpdate += new System.EventHandler(this.presets_box_TextUpdate);
-            // 
-            // regex_replace
-            // 
-            this.regex_replace.Dock = System.Windows.Forms.DockStyle.Top;
-            this.regex_replace.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.regex_replace.Location = new System.Drawing.Point(64, 25);
-            this.regex_replace.Name = "regex_replace";
-            this.regex_replace.Size = new System.Drawing.Size(601, 25);
-            this.regex_replace.TabIndex = 1;
-            // 
-            // regex_match
-            // 
-            this.regex_match.Dock = System.Windows.Forms.DockStyle.Top;
-            this.regex_match.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.regex_match.Location = new System.Drawing.Point(64, 0);
-            this.regex_match.Name = "regex_match";
-            this.regex_match.Size = new System.Drawing.Size(601, 25);
-            this.regex_match.TabIndex = 0;
-            // 
-            // label3
-            // 
-            this.label3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label3.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(0, 25);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(64, 25);
-            this.label3.TabIndex = 99;
-            this.label3.Text = "Match";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // label2
-            // 
-            this.label2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label2.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(0, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(64, 25);
-            this.label2.TabIndex = 99;
-            this.label2.Text = "Replace";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // label1
-            // 
-            this.label1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label1.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(0, 50);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(64, 25);
-            this.label1.TabIndex = 99;
-            this.label1.Text = "Presets";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
             // splitter_main
             // 
             this.splitter_main.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -597,29 +620,6 @@ namespace RegExHelper
             this.panel2.Size = new System.Drawing.Size(780, 187);
             this.panel2.TabIndex = 99;
             // 
-            // panel9
-            // 
-            this.panel9.Controls.Add(this.presets_box);
-            this.panel9.Controls.Add(this.regex_replace);
-            this.panel9.Controls.Add(this.regex_match);
-            this.panel9.Controls.Add(this.panel10);
-            this.panel9.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel9.Location = new System.Drawing.Point(0, 0);
-            this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(665, 75);
-            this.panel9.TabIndex = 0;
-            // 
-            // panel10
-            // 
-            this.panel10.Controls.Add(this.label1);
-            this.panel10.Controls.Add(this.label3);
-            this.panel10.Controls.Add(this.label2);
-            this.panel10.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel10.Location = new System.Drawing.Point(0, 0);
-            this.panel10.Name = "panel10";
-            this.panel10.Size = new System.Drawing.Size(64, 75);
-            this.panel10.TabIndex = 100;
-            // 
             // toolTip1
             // 
             this.toolTip1.AutoPopDelay = 5000;
@@ -644,6 +644,8 @@ namespace RegExHelper
             this.panel3.PerformLayout();
             this.pane2.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
+            this.panel9.ResumeLayout(false);
+            this.panel10.ResumeLayout(false);
             this.panel6.ResumeLayout(false);
             this.panel7.ResumeLayout(false);
             this.panel8.ResumeLayout(false);
@@ -652,8 +654,6 @@ namespace RegExHelper
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            this.panel9.ResumeLayout(false);
-            this.panel10.ResumeLayout(false);
             this.ResumeLayout(false);
 
 		}

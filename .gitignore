@@ -10,3 +10,4 @@ RegexRunner document.docx
 RegexRunner.csproj.vspscc
 UpgradeLog.XML
 /.vs/RegexRunner/v15/sqlite3
+/.vs/RegexRunner/v15/Server/sqlite3
